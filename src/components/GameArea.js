@@ -22,7 +22,7 @@ import tDHC from '../objects/tallDarkHoleCylinder.glb';
 import tDHS from '../objects/tallDarkHoleSquare.glb';
 import tLFC from '../objects/tallLightFlatCylinder.glb';
 import tLHS from '../objects/tallLightHoleSquare.glb';
-import gameBoard from '../objects/newGameboard.glb';
+import gameBoard from '../objects/gameBoard.glb';
 import coaster from '../objects/coaster.glb';
 import { initBoard, selectBagPiece, selectBoardCell, updateBoardData, listenNetworkData } from '../actions';
 import { connect } from 'react-redux';
@@ -70,59 +70,29 @@ class Viewer extends Component {
         camera.attachControl(canvas, true);
         scene.activeCamera.panningSensibility = 0;
         camera.lowerBetaLimit = 0.5;
-        camera.upperBetaLimit = (Math.PI / 2) * 0.99;
+        camera.upperBetaLimit = (Math.PI / 2.33) * 0.99;
         camera.upperRadiusLimit = 50;
-        camera.lowerRadiusLimit = 20;
+        camera.lowerRadiusLimit = 30;
         
         //near left
-        var light = new BABYLON.DirectionalLight("dir01", new BABYLON.Vector3(-1, -.35, 1), scene);
+        var light = new BABYLON.DirectionalLight("dir01", new BABYLON.Vector3(-1, -1, 1), scene);
 	    light.position = new BABYLON.Vector3(20, 20, -20);
-        light.intensity = 1.7;
+        light.intensity = 1;
 
         //near right
-        var light2 = new BABYLON.DirectionalLight("dir03", new BABYLON.Vector3(-1, -.35, -1), scene);
+        var light2 = new BABYLON.DirectionalLight("dir03", new BABYLON.Vector3(-1, -1, -1), scene);
 	    light2.position = new BABYLON.Vector3(20, 20, 20);
-        light2.intensity = 1.7;
+        light2.intensity = 1;
 
         //back left
-        var light3 = new BABYLON.DirectionalLight("dir04", new BABYLON.Vector3(1, -.35, 1), scene);
+        var light3 = new BABYLON.DirectionalLight("dir04", new BABYLON.Vector3(1, -1, 1), scene);
 	    light3.position = new BABYLON.Vector3(-20, 20, -20);
-        light3.intensity = 1.7;
+        light3.intensity = 1;
         
         //back right
-        var light4 = new BABYLON.DirectionalLight("dir02", new BABYLON.Vector3(1, -.35, -1), scene);
+        var light4 = new BABYLON.DirectionalLight("dir02", new BABYLON.Vector3(2, -2.5, -.5), scene);
 	    light4.position = new BABYLON.Vector3(-20, 20, 20);
-        light4.intensity = 1.7;
-
-        // //near center
-        // var light5 = new BABYLON.DirectionalLight("dir05", new BABYLON.Vector3(0, -1, 0), scene);
-	    // light5.position = new BABYLON.Vector3(0, 0, 0);
-        // light5.intensity = 1.7;
-
-        // //back center
-        // var light6 = new BABYLON.DirectionalLight("dir02", new BABYLON.Vector3(1, -.5, 0), scene);
-	    // light6.position = new BABYLON.Vector3(20, 20, -20);
-        // light6.intensity = 1.7;
-
-        // //left
-        // var light7 = new BABYLON.DirectionalLight("dir05", new BABYLON.Vector3(0, -.35, 1), scene);
-	    // light7.position = new BABYLON.Vector3(20, 20, -20);
-        // light7.intensity = 1;
-
-        // //far center
-        // var light7 = new BABYLON.DirectionalLight("dir06", new BABYLON.Vector3(1, -.35, 0), scene);
-	    // light7.position = new BABYLON.Vector3(20, 20, -20);
-        // light7.intensity = 1;
-
-        // //near center
-        // var light8 = new BABYLON.DirectionalLight("dir07", new BABYLON.Vector3(-1, -.35, 0), scene);
-	    // light8.position = new BABYLON.Vector3(20, 20, -20);
-        // light8.intensity = 1;
-
-        // //right
-        // var light9 = new BABYLON.DirectionalLight("dir08", new BABYLON.Vector3(0, -.35, -1), scene);
-	    // light9.position = new BABYLON.Vector3(20, 20, -20);
-        // light9.intensity = 1;
+        light4.intensity = .5;
 
         var ground = BABYLON.Mesh.CreateGround("ground", 17, 17, 2, scene);
         ground.position.y = 0.17;
@@ -272,7 +242,7 @@ class Viewer extends Component {
             holePiece1 = newMeshes[0];
             holePiece1.name = "holePiece1";
             holePiece1.position = board1;
-            holePiece1.position.y = 0.015
+            holePiece1.position.y = 0.015;
 
             holePiece2 = holePiece1.clone("holePiece2");
             holePiece2.position = board2;
