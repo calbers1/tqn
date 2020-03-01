@@ -12,6 +12,12 @@ class GameScreen extends Component {
     componentWillMount() {
         this.props.initBoard();
     }
+    
+    componentDidMount(){
+        if (!this.props.isUserTurn){
+            this.props.selectBagPiece('0', true);
+        }
+    }
 
     handleOnlineChange () {
         const { isOnlineMode } = this.props;

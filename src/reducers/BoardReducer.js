@@ -3,7 +3,7 @@ import { cellCords, pieceObjects } from '../helpers';
 
 
 const INITIAL_STATE = {
-    isUserTurn: true,
+    isUserTurn: false,
     pieces: [],
     selectedPieceId: '',
     isOnlineMode: false,

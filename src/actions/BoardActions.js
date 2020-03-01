@@ -79,12 +79,12 @@ export const selectBagPiece = (pieceId, isRemote = false) => {
                     const cell = cellCords.find((cords, idx) => idx === cellId);
                     const [x, y, z] = cell;
                     const position = {x, y, z};
-                    console.log("Selected location: ", location, " Selected Piece: ", pieceId);
+                   // console.log("Selected location: ", location, " Selected Piece: ", pieceId);
                     dispatch(selectBoardCell(location.row, location.column, false, position));
                     const {isGameOver} = getState().board;
                     if (!isGameOver){
                     dispatch(selectBagPiece(pieceId, true));
-                    console.log("Selecting Bag Piece ", pieceId, " isGameOver: ", isGameOver);
+                   // console.log("Selecting Bag Piece ", pieceId, " isGameOver: ", isGameOver);
                     }
                 })
                 .catch(err => {
